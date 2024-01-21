@@ -12,8 +12,8 @@ function ActionDiv() {
   return (
     <section className={style.actionDiv}>
       {step == "normal" && <Form step={step} setStep={setStep} />}
-      {step == "join" && <Join />}
-      {step == "login" && <Login />}
+      {step == "join" && <Join step={step} setStep={setStep} />}
+      {step == "login" && <Login step={step} setStep={setStep} />}
     </section>
   );
 }
