@@ -52,7 +52,7 @@ function Login({ step, setStep }: { step: any; setStep: any }) {
               console.log("로그인 성공 or 토큰 재발급");
               router.push("./view");
             } else {
-              console.log(returnData.message);
+              alert(returnData.message);
             }
           }}
           type="submit"
