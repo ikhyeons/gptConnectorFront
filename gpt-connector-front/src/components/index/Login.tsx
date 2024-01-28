@@ -50,7 +50,7 @@ function Login({ step, setStep }: { step: any; setStep: any }) {
             ).json();
             if (returnData.code == 200) {
               console.log("로그인 성공 or 토큰 재발급");
-              router.push("./view");
+              router.push("./viewer");
             } else {
               alert(returnData.message);
             }
