@@ -1,0 +1,28 @@
+.main {
+  height: calc(100vh - 80px);
+  width: 100%;
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.actionDiv {
+  margin: 0 auto;
+  width: 600px;
+  .form {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    .joinBtn {
+      font-size: 20px;
+      height: 50px;
+      width: 200px;
+    }
+    .loginBtn {
+      font-size: 20px;
+      height: 50px;
+      width: 200px;
+    }
+  }
+}
