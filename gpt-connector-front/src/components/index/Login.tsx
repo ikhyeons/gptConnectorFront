@@ -3,13 +3,13 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useCookies } from "react-cookie";
+import baseURL from "@/utils/baseURL";
 
 function Login({ step, setStep }: { step: any; setStep: any }) {
   const [userLoginInfo, setUserLoginInfo] = useState({ ma: "", pw: "" });
   const router = useRouter();
   const tokenCookie = useCookies(["token"]);
   const mcCookie = useCookies(["mc"]);
-  const tokenFCookie = useCookies(["tokenF"]);
   return (
     <div>
       <form action="" method="post">
@@ -44,7 +44,7 @@ function Login({ step, setStep }: { step: any; setStep: any }) {
           onClick={async (e) => {
             e.preventDefault();
             const returnData = await (
-              await fetch("http://localhost:2000/login", {
+              await fetch(`${baseURL}/login`, {
                 headers: {
                   "Content-Type": "application/json",
                 },
@@ -60,10 +60,6 @@ function Login({ step, setStep }: { step: any; setStep: any }) {
                 maxAge: 1000 * 60 * 60 * 24 * 30,
               });
               mcCookie[1]("mc", returnData.ma, {
-                path: "/",
-                maxAge: 1000 * 60 * 60 * 24 * 30,
-              });
-              tokenFCookie[1]("tokenF", returnData.ma, {
                 path: "/",
                 maxAge: 1000 * 60 * 60 * 24 * 30,
               });

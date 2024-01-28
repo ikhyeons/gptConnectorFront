@@ -1,4 +1,5 @@
 "use client";
+import baseURL from "@/utils/baseURL";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
@@ -7,7 +8,7 @@ function Join({ step, setStep }: { step: any; setStep: any }) {
   const router = useRouter();
   return (
     <div>
-      <form action="http://localhost:2000/join" method="post">
+      <form action={`${baseURL}/join`} method="post">
         <div className="inputDiv">
           <label htmlFor="mcNum">기기번호</label>
           <input
@@ -46,7 +47,7 @@ function Join({ step, setStep }: { step: any; setStep: any }) {
           onClick={async (e) => {
             e.preventDefault();
             const returnData = await (
-              await fetch("http://localhost:2000/join", {
+              await fetch(`${baseURL}/join`, {
                 headers: {
                   "Content-Type": "application/json",
                 },
