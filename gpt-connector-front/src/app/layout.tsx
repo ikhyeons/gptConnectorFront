@@ -1,3 +1,4 @@
+import RecoilRootProvider from "@/utils/RecoilRootProvider";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -6,14 +7,12 @@ export const metadata: Metadata = {
   description: "gptConnector Log viewer",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body>
+        <RecoilRootProvider>{children}</RecoilRootProvider>
+      </body>
     </html>
   );
 }
