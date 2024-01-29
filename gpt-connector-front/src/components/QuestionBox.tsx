@@ -3,6 +3,7 @@
 import { filteredQnaList } from "@/atom/atom";
 import { useState } from "react";
 import { useRecoilValue } from "recoil";
+import { getTimeByNow } from "./getTime";
 
 const QuestionBox = (props: QuestionBoxProps) => {
   const { index } = props;
@@ -16,12 +17,14 @@ const QuestionBox = (props: QuestionBoxProps) => {
         setIsClick(!isClick);
       }}
     >
+      <div className="date">
+        <span>{getTimeByNow(qna[index].reqdate)}</span>
+      </div>
       <div className="question">
-        <span>Q {qna[index].req}</span>
-        <span>{qna[index].reqdate.slice(0, 10) + " " + qna[index].reqdate.slice(11, 19)}</span>
+        <span>질문 : {qna[index].req}</span>
       </div>
       <div className={isClick === false ? "answer_off" : "answer_on"}>
-        <span>A {qna[index].res}</span>
+        <span>답변 : {qna[index].res}</span>
       </div>
     </div>
   );

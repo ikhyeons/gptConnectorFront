@@ -38,7 +38,10 @@ const Search = () => {
           searchButton();
         }}
       >
-        검색
+        <span className="reading-glasses">
+          <span className="reading-glasses__circle"></span>
+          <span className="reading-glasses__line"></span>
+        </span>
       </button>
     </div>
   );
