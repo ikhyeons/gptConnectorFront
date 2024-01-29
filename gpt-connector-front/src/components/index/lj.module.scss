@@ -1,0 +1,66 @@
+$text-color: #fff;
+$accent-color: #80cee1;
+$hover-color: #70bed1;
+$offset: 0.125em;
+$border-width: 0.125em;
+$transition: 0.2s ease-out;
+
+.formDiv {
+  width: 500px;
+  border-radius: 8px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.336);
+  & > :nth-child(1) {
+    margin-bottom: 40px;
+  }
+  .inputDiv {
+    margin: 20px 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    & > label {
+      font-size: 20px;
+      font-weight: bold;
+      color: white;
+      width: 120px;
+    }
+    & > input {
+      border-radius: 8px;
+      border: none;
+      padding: 10px;
+      font-size: 25px;
+    }
+  }
+
+  .btnWrap {
+    display: flex;
+    justify-content: space-between;
+    .btn {
+      border-radius: 8px;
+      width: 200px;
+      background: rgba(233, 255, 228, 0.767);
+      padding: 0.66em 2.25em;
+      text-decoration: none;
+      position: relative;
+      display: inline-block;
+      font-size: 20px;
+      font-weight: bold;
+      color: rgb(0, 0, 0);
+
+      &:active {
+        transform: translate($offset, $offset);
+        background: rgba(172, 204, 163, 0.849);
+      }
+    }
+
+    .btnfilled {
+      background-color: $accent-color;
+      color: $text-color;
+      transition: background-color $transition;
+
+      &:hover {
+        background-color: $hover-color;
+      }
+    }
+  }
+}

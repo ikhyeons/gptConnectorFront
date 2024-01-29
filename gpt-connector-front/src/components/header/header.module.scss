@@ -6,9 +6,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: red;
+  background: #8faadc;
   .headerTitle {
     font-size: 40px;
+    font-weight: bold;
     color: white;
+    cursor: default;
   }
 }

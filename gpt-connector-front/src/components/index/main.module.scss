@@ -1,28 +1,28 @@
+$text-color: #fff;
+$accent-color: #80cee1;
+$hover-color: #70bed1;
+$offset: 0.125em;
+$border-width: 0.125em;
+$transition: 0.2s ease-out;
 .main {
+  background: #474747;
   height: calc(100vh - 80px);
   width: 100%;
   margin-top: 80px;
-  display: flex;
-  justify-content: center;
+
   align-items: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+}
+
+.imageDiv {
+  width: 45%;
+  margin-left: 100px;
 }
 
 .actionDiv {
-  margin: 0 auto;
-  width: 600px;
-  .form {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    .joinBtn {
-      font-size: 20px;
-      height: 50px;
-      width: 200px;
-    }
-    .loginBtn {
-      font-size: 20px;
-      height: 50px;
-      width: 200px;
-    }
-  }
+  margin-left: 50px;
+  width: 55%;
 }

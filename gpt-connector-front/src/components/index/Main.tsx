@@ -12,6 +12,7 @@ function Main() {
   }, []);
   return (
     <main className={style.main}>
+      <img className={style.imageDiv} src="/background1.jpg" alt="" />
       <ActionDiv />
     </main>
   );

@@ -1,4 +1,10 @@
+@font-face {
+  font-family: "nanum2";
+  src: url("/font/NanumSquare_acB.ttf");
+}
+
 * {
+  font-family: "nanum2";
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
