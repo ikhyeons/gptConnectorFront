@@ -11,7 +11,7 @@ export function getTime(timeString: string) {
 }
 
 export function getTimeByNow(timeString: string) {
-  const date = new Date(new Date(timeString).getTime() + -540 * 60 * 1000);
+  const date = new Date(new Date(timeString).getTime());
   const now = new Date();
 
   const milliSeconds = Number(now) - Number(date);
