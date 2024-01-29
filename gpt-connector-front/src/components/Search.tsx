@@ -17,6 +17,9 @@ const Search = () => {
   const searchButton = () => {
     if (searchInput !== "") {
       setFilteredQna(qna.filter((data) => data.req.includes(searchInput)));
+      if (filteredQna) {
+        setFilteredQna(qna.filter((data) => data.res.includes(searchInput)));
+      }
     } else {
       setFilteredQna(qna);
     }
