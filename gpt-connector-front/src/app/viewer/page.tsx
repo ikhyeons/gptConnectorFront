@@ -6,7 +6,7 @@ const Viewr = () => {
   return (
     <div className="container">
       <div className="navbar">
-        <span />
+        <div className="logo">자비스보다는 못하지만</div>
         <Search />
         <LogOutButton />
       </div>
