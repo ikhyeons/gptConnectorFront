@@ -18,7 +18,9 @@ const QuestionBox = (props: QuestionBoxProps) => {
       }}
     >
       <div className="date">
-        <span>{getTimeByNow(qna[index].reqdate)}</span>
+        <span style={{ position: "absolute", top: "22px" }}>
+          {getTimeByNow(qna[index].reqdate)}
+        </span>
       </div>
       <div className="question">
         <span>질문 : {qna[index].req}</span>
