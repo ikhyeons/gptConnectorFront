@@ -1,16 +1,35 @@
 "use client";
 
-import { filteredQnaList } from "@/atom/atom";
-import { useRecoilValue } from "recoil";
+import { filteredQnaList, qnaList } from "@/atom/atom";
+import baseURL from "@/utils/baseURL";
+import { useEffect } from "react";
+import { Cookies } from "react-cookie";
+import { useRecoilState, useRecoilValue } from "recoil";
 import QuestionBox from "./QuestionBox";
 
 const ContentBox = () => {
   const qna = useRecoilValue(filteredQnaList);
+  const [resList, setResList] = useRecoilState(qnaList);
+
+  useEffect(() => {
+    fetch(`${baseURL}/list`, {
+      headers: {
+        Authorization: new Cookies().get("token"),
+      },
+      method: "GET",
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setResList(res);
+        console.log(res);
+      });
+  }, []);
 
   return (
     <div className="viewer_body">
-      {qna.map((data: { question: string; answer: string; date: string }, index: number) => {
-        return <QuestionBox data={data} index={index} key={index} />;
+      {qna.map((data: any, index: any) => {
+        return <QuestionBox index={index} key={index} />;
       })}
     </div>
   );

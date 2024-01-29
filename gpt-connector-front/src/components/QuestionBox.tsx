@@ -1,30 +1,27 @@
 "use client";
 
+import { filteredQnaList } from "@/atom/atom";
 import { useState } from "react";
+import { useRecoilValue } from "recoil";
 
-type Props = {
-  data: { question: string; answer: string; date: string };
-  index: number;
-};
-
-const QuestionBox = (props: Props) => {
-  const { question, answer, date } = props.data;
+const QuestionBox = (props: QuestionBoxProps) => {
+  const { index } = props;
+  const qna = useRecoilValue(filteredQnaList);
   const [isClick, setIsClick] = useState(false);
 
   return (
     <div
       className="question_box"
-      key={props.index}
       onClick={() => {
         setIsClick(!isClick);
       }}
     >
       <div className="question">
-        <span>Q {question}</span>
-        <span>{date}</span>
+        <span>Q {qna[index].req}</span>
+        <span>{qna[index].reqdate.slice(0, 10) + " " + qna[index].reqdate.slice(11, 19)}</span>
       </div>
       <div className={isClick === false ? "answer_off" : "answer_on"}>
-        <span>A {answer}</span>
+        <span>A {qna[index].res}</span>
       </div>
     </div>
   );
