@@ -69,7 +69,7 @@ function Login({ step, setStep }: { step: any; setStep: any }) {
               setUserLoginInfo((prev) => ({ ...prev, pw: e.target.value }));
             }}
             id="pw"
-            type="text"
+            type="password"
           />
         </div>
         <div className={style.btnWrap}>
