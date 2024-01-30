@@ -1,27 +1,28 @@
 "use client";
 
-import { filteredQnaList, qnaList } from "@/atom/atom";
+import { filteredQnaList, filterState, qnaList, searchInputState } from "@/atom/atom";
 import React, { useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 
 const Search = () => {
-  const [filteredQna, setFilteredQna] = useRecoilState(filteredQnaList);
+  const filteredQna = useRecoilValue(filteredQnaList);
+  const [filter, setFilter] = useRecoilState(filterState);
+  const [inputState, setInputState] = useRecoilState(searchInputState);
   const qna = useRecoilValue(qnaList);
-  const [searchInput, setSearchInput] = useState("");
 
   const getValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchInput(e.target.value);
+    setInputState(e.target.value);
     console.log(e.target.value);
   };
 
   const searchButton = () => {
-    if (searchInput !== "") {
-      setFilteredQna(qna.filter((data) => data.req.includes(searchInput)));
+    if (inputState !== "") {
+      setFilter("question");
       if (filteredQna) {
-        setFilteredQna(qna.filter((data) => data.res.includes(searchInput)));
+        setFilter("answer");
       }
     } else {
-      setFilteredQna(qna);
+      setFilter("all");
     }
   };
 
@@ -37,7 +38,7 @@ const Search = () => {
       <button
         className="search_button"
         onClick={() => {
-          setFilteredQna(qna);
+          setFilter("all");
           searchButton();
         }}
       >

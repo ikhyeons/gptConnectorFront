@@ -2,28 +2,35 @@
 
 import { filteredQnaList, qnaList } from "@/atom/atom";
 import baseURL from "@/utils/baseURL";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { Cookies } from "react-cookie";
+import { Cookies, useCookies } from "react-cookie";
 import { useRecoilState, useRecoilValue } from "recoil";
 import QuestionBox from "./QuestionBox";
 
 const ContentBox = () => {
   const qna = useRecoilValue(filteredQnaList);
   const [resList, setResList] = useRecoilState(qnaList);
+  const [cookies, setcookie, deleteCookie] = useCookies(["token"]);
+  const router = useRouter();
 
   useEffect(() => {
-    fetch(`${baseURL}/list`, {
-      headers: {
-        Authorization: new Cookies().get("token"),
-      },
-      method: "GET",
-      credentials: "include",
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        setResList(res);
-        console.log(res);
-      });
+    if (!cookies.token) {
+      router.replace("/");
+    } else {
+      fetch(`${baseURL}/list`, {
+        headers: {
+          Authorization: new Cookies().get("token"),
+        },
+        method: "GET",
+        credentials: "include",
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          setResList(res);
+          console.log(res);
+        });
+    }
   }, []);
 
   return (
